@@ -42,6 +42,16 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+
+                        {{-- keranjang --}}
+                        @if (Auth::user())
+                            @if (Auth::user()->level == 0)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('BelanjaUser') }}">Belanja Anda</a>
+                                </li>
+                            @endif
+                        @endif
+
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
