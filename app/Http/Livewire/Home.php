@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Belanja;
 use App\Models\Produk;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Home extends Component
@@ -12,6 +14,30 @@ class Home extends Component
 
     // atribut filtering
     public $search, $min, $max;
+
+    public function beli($id)
+    {
+        if (!Auth::user()) { // cek apakah yang klik beli sudah login
+            return redirect()->route('login');
+        }
+        if (Auth::user()->level == 1) { // cek apakah admin
+            return redirect()->to('/');
+        }
+
+        // jika sudah login, maka cari data produk sesuai dengan id yang dikasih
+        $produk = Produk::find($id);
+
+        // masukan ke tb belanja(keranjang belanja) data produk yang dipilih
+        Belanja::create([
+            'user_id' => Auth::user()->id,
+            'total_harga' => $produk->harga,
+            'produk_id' => $produk->id,
+            'status' => 0,
+        ]);
+
+        // redirect
+        return redirect()->to('BelanjaUser');
+    }
 
     public function render()
     {

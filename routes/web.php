@@ -24,3 +24,4 @@ Auth::routes();
 // Route::livewire('/', 'home')->name('home');
 Route::get('/', \App\Http\Livewire\Home::class);
 Route::get('/TambahProduk', \App\Http\Livewire\TambahProduk::class);
+Route::get('/BelanjaUser', \App\Http\Livewire\BelanjaUser::class);
