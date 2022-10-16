@@ -41,10 +41,10 @@
                                         <a href="{{ url('TambahOngkir/'.$pesanan->id) }}" class="btn btn-warning btn-block">Tambahkan Ongkir</a>
                                     @endif
                                     @if ($pesanan->status == 1)
-                                        <a href="{{ url('Bayar/'.$pesanan->id) }}" class="btn btn-warning btn-block">Pilih Pembayaran</a>
+                                        <a href="{{ url('Bayar/'.$pesanan->id) }}" class="btn btn-primary btn-block">Pilih Pembayaran</a>
                                     @endif
                                     @if ($pesanan->status == 2)
-                                        <a href="{{ url('Bayar/'.$pesanan->id) }}" class="btn btn-warning btn-block">Lihat Status</a>
+                                        <a href="{{ url('Bayar/'.$pesanan->id) }}" class="btn btn-success btn-block">Lihat Status</a>
                                     @endif
                                 </td>
                                 <td>
